@@ -1,0 +1,1 @@
+nuget pack .\MarkdownRazor.nuspec -Version 0.1.0 -BasePath .\MarkdownRazor\bin\Debug -Exclude **\obj\**

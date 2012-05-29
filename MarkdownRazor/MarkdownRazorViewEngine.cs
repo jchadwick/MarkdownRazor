@@ -9,14 +9,14 @@ namespace MarkdownRazor
     {
         public MarkdownRazorViewEngine()
         {
-            FileExtensions = InsertMarkdownFileExtensions(FileExtensions);
+            FileExtensions = ReplaceWithMarkdownFileExtensions(FileExtensions);
 
-            AreaViewLocationFormats = InsertMarkdownFileExtensions(AreaViewLocationFormats);
-            AreaMasterLocationFormats = InsertMarkdownFileExtensions(AreaMasterLocationFormats);
-            AreaPartialViewLocationFormats = InsertMarkdownFileExtensions(AreaPartialViewLocationFormats);
-            ViewLocationFormats = InsertMarkdownFileExtensions(ViewLocationFormats);
-            MasterLocationFormats = InsertMarkdownFileExtensions(MasterLocationFormats);
-            PartialViewLocationFormats = InsertMarkdownFileExtensions(PartialViewLocationFormats);
+            AreaViewLocationFormats = ReplaceWithMarkdownFileExtensions(AreaViewLocationFormats);
+            AreaMasterLocationFormats = ReplaceWithMarkdownFileExtensions(AreaMasterLocationFormats);
+            AreaPartialViewLocationFormats = ReplaceWithMarkdownFileExtensions(AreaPartialViewLocationFormats);
+            ViewLocationFormats = ReplaceWithMarkdownFileExtensions(ViewLocationFormats);
+            MasterLocationFormats = ReplaceWithMarkdownFileExtensions(MasterLocationFormats);
+            PartialViewLocationFormats = ReplaceWithMarkdownFileExtensions(PartialViewLocationFormats);
         }
 
         protected override IView CreatePartialView(ControllerContext controllerContext, string partialPath)
@@ -31,20 +31,16 @@ namespace MarkdownRazor
 
         protected override IView CreateView(ControllerContext controllerContext, string viewPath, string masterPath)
         {
-            var view = base.CreateView(controllerContext, viewPath, masterPath);
-
-            if (MarkdownRazor.IsMarkdownRazorFilename(viewPath))
-                return new MarkdownRazorView((RazorView)view);
-
-            return view;
+            // NOTE: Only support partial views right now...
+            return CreatePartialView(controllerContext, viewPath);
         }
 
-        private static string[] InsertMarkdownFileExtensions(IEnumerable<string> filenames)
+        private static string[] ReplaceWithMarkdownFileExtensions(IEnumerable<string> filenames)
         {
-            return InsertMarkdownFileExtensionsCore(filenames).Distinct().ToArray();
+            return ReplaceWithMarkdownFileExtensionsCore(filenames).Distinct().ToArray();
         }
 
-        private static IEnumerable<string> InsertMarkdownFileExtensionsCore(IEnumerable<string> filenames)
+        private static IEnumerable<string> ReplaceWithMarkdownFileExtensionsCore(IEnumerable<string> filenames)
         {
             foreach (var filename in filenames)
             {
@@ -53,8 +49,6 @@ namespace MarkdownRazor
                     yield return Regex.Replace(filename, "([^.]*)html$", extension);
                     yield return Regex.Replace(filename, "([^.]*)html$", "$1" + extension);
                 }
-
-                yield return filename;
             }
         }
     }

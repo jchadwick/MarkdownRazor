@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>MarkdownRazor</id>
+    <version>0.1.0</version>
+    <authors>Jess Chadwick</authors>
+    <projectUrl>https://github.com/jchadwick/MarkdownRazor</projectUrl>
+    <description>Markdown and Razor together at last!</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>razor markdown mvc view</tags>
+    <dependencies>
+      <dependency id="MarkdownDeep.NET" version="1.4" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="MarkdownRazor.dll" target="lib\net40" /> 
+    <file src="MarkdownRazor.pdb" target="lib\net40" /> 
+    <file src="..\..\**.cs*" target="src" /> 
+  </files>
+</package>

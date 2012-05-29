@@ -66,6 +66,7 @@ local.properties
 **/*.dotCover
 
 packages
+*.nupkg
 
 # Visual C++ cache files
 ipch/

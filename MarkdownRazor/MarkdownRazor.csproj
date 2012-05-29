@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Compile Include="MarkdownMvcWebRazorHostFactory.cs" />
     <Compile Include="MarkdownRazor.cs" />
+    <Compile Include="MarkdownRazorBuildProvider.cs" />
     <Compile Include="MarkdownRazorHost.cs" />
     <Compile Include="MarkdownRazorView.cs" />
     <Compile Include="MarkdownRazorViewEngine.cs" />
