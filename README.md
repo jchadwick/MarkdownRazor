@@ -1,3 +1,1 @@
-An attempt at providing basic Markdown support within Razor templates
-
-NOTE: This project does not actually work!
+ASP.NET MVC Razor View Engine that supports Markdown syntax
